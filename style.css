@@ -1,26 +1,28 @@
 /* ==========================================================================
-   PREFIXO GLOBAL & VARIÁVEIS EXCLUSIVAS DA IDENTIDADE VISUAL
+   PREFIXO GLOBAL & PALETA INSPIRADA NA NOVA LOGO (DARK MONOCHROME)
    ========================================================================== */
 :root {
-    /* Fundos com mais profundidade e contraste */
-    --bg-main: #070a13;       /* Um azul-escuro quase preto, ideal para destacar elementos */
-    --bg-surface: #111726;    /* Tom ligeiramente mais claro para cards, seções e cabeçalhos */
+    /* Fundos escuros profundos e minimalistas */
+    --bg-main: #0a0a0a;       /* Preto sutil profundo */
+    --bg-surface: #141414;    /* Cinza escuro elegante para cards e seções */
+    --bg-card: #1c1c1c;       /* Elevado para cards em destaque */
 
-    /* Cores de Destaque (Dourado mais vivo e moderno) */
-    --primary: #f59e0b;       /* Um dourado/âmbar vibrante que se destaca muito bem no dark mode */
-    --primary-light: #fbbf24; /* Versão mais clara para efeitos de hover (passar o mouse) */
-    --secondary: #60a5fa;     /* Azul sutil para links secundários ou detalhes adicionais */
+    /* Destaques Monocromáticos e Clean */
+    --primary: #ffffff;       /* Branco absoluto (Inspirado na logo) */
+    --primary-hover: #e5e5e5; /* Branco suave para interações */
+    --accent: #525252;        /* Tom cinza médio para elementos de apoio */
 
-    /* Textos com excelente legibilidade */
-    --text-main: #ffffff;     /* Branco puro para títulos principais e legibilidade máxima */
-    --text-muted: #94a3b8;    /* Cinza azulado suave para descrições e links secundários */
+    /* Textos com alto contraste */
+    --text-main: #ffffff;     /* Texto principal em branco puro */
+    --text-muted: #a3a3a3;    /* Cinza neutro legível para textos secundários */
 
-    /* Bordas e Detalhes */
-    --border-color: #1e293b;  /* Borda sutil para separar elementos de forma elegante */
-    --shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Sombra um pouco mais forte para dar peso */
+    /* Bordas geométricas e afiadas */
+    --border-color: #262626;  /* Borda sutil e sofisticada */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
     
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -63,18 +65,18 @@ body {
     gap: 20px;
 }
 
-/* Espaçamentos e Títulos Premium */
+/* Espaçamentos e Títulos */
 section {
     padding: 100px 0;
 }
 
 .section-tag {
     display: inline-block;
-    color: var(--primary);
-    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     margin-bottom: 12px;
 }
 
@@ -85,6 +87,7 @@ section {
     position: relative;
     display: inline-block;
     padding-bottom: 12px;
+    letter-spacing: -0.5px;
 }
 
 .section-title::after {
@@ -92,9 +95,9 @@ section {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), transparent);
+    width: 40px;
+    height: 2px;
+    background: var(--primary);
 }
 
 .center-title {
@@ -109,13 +112,46 @@ section {
 
 .section-subtitle {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     max-width: 600px;
     margin: 0 auto;
 }
 
 /* ==========================================================================
-   NAVBAR DINÂMICA
+   ESTILIZAÇÃO DA LOGO E BRANDING
+   ========================================================================== */
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    color: var(--primary);
+    transition: var(--transition-smooth);
+}
+
+.logo-text {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.logo-brand:hover .logo-mark {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   NAVBAR
    ========================================================================== */
 .navbar {
     position: fixed;
@@ -129,7 +165,7 @@ section {
 
 .navbar.scrolled {
     padding: 16px 0;
-    background: rgba(11, 15, 25, 0.85);
+    background: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
 }
@@ -143,18 +179,6 @@ section {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--text-main);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-}
-
-.logo span {
-    color: var(--primary);
-}
-
 .nav-menu {
     display: flex;
     list-style: none;
@@ -164,8 +188,9 @@ section {
 .nav-link {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
+    letter-spacing: 0.5px;
     transition: var(--transition-smooth);
 }
 
@@ -181,32 +206,33 @@ section {
 }
 
 /* ==========================================================================
-   BOTÕES E COMPONENTES DE INTERAÇÃO
+   BOTÕES E COMPONENTES
    ========================================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 14px 28px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     text-decoration: none;
     transition: var(--transition-smooth);
     cursor: pointer;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    background: var(--primary);
     color: #000;
-    border: none;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    border: 1px solid var(--primary);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-    filter: brightness(1.1);
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {
@@ -216,9 +242,8 @@ section {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.03);
     border-color: var(--primary);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .btn-text {
@@ -232,7 +257,7 @@ section {
 }
 
 .btn-text:hover {
-    color: var(--primary-light);
+    opacity: 0.8;
 }
 
 /* ==========================================================================
@@ -258,14 +283,14 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(59, 130, 246, 0.1);
-    color: var(--secondary);
+    background: var(--bg-surface);
+    color: var(--text-muted);
     padding: 6px 14px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 24px;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .hero-content h1 {
@@ -273,28 +298,17 @@ section {
     font-weight: 800;
     line-height: 1.15;
     margin-bottom: 24px;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
-.text-gradient {
-  /* Correção do gradiente com fallbacks seguros */
-  background: linear-gradient(135deg, var(--primary, #f59e0b), var(--primary-light, #fbbf24));
-  
-  -webkit-background-clip: text;
-  background-clip: text;
-  
-  /* Uso correto do preenchimento transparente apenas onde é suportado */
-  -webkit-text-fill-color: transparent;
-  
-  /* Fallback de cor caso o navegador não suporte gradiente no texto */
-  color: var(--primary, #f59e0b); 
-  
-  display: inline-block;
+.text-highlight {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
 }
 
 .hero-content p {
     color: var(--text-muted);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 40px;
     max-width: 540px;
 }
@@ -304,7 +318,7 @@ section {
     gap: 16px;
 }
 
-/* Arte/Ilustração da Direita (Hero) */
+/* Área da Logo Destaque na Hero */
 .hero-image-wrapper {
     position: relative;
 }
@@ -312,56 +326,64 @@ section {
 .tech-card-mesh {
     width: 100%;
     height: 380px;
-    background: radial-gradient(circle, rgba(19,26,42,1) 0%, rgba(11,15,25,1) 100%);
-    border-radius: 16px;
+    background: var(--bg-surface);
+    border-radius: 8px;
     border: 1px solid var(--border-color);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
-.mesh-circle {
+.mesh-glow {
     position: absolute;
-    width: 150px;
-    height: 150px;
-    background: var(--secondary);
-    filter: blur(100px);
-    opacity: 0.3;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(80px);
+    border-radius: 50%;
 }
 
-.code-giant {
-    font-size: 7rem;
-    color: rgba(255, 255, 255, 0.04);
+.hero-logo-giant {
+    width: 160px;
+    height: 160px;
+    color: var(--primary);
+    opacity: 0.95;
+    transition: var(--transition-smooth);
+}
+
+.tech-card-mesh:hover .hero-logo-giant {
+    transform: scale(1.05);
 }
 
 .glass-widget {
     position: absolute;
-    background: rgba(19, 26, 42, 0.7);
+    background: rgba(20, 20, 20, 0.85);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-color);
-    padding: 16px;
-    border-radius: 12px;
+    padding: 14px 18px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     gap: 12px;
-    box-shadow: var(--shadow);
 }
 
-.glass-widget h4 { font-size: 0.95rem; font-weight: 600; }
+.glass-widget h4 { font-size: 0.9rem; font-weight: 600; }
 .glass-widget p { font-size: 0.75rem; color: var(--text-muted); }
 
-.widget-1 { top: 40px; left: -20px; border-left: 3px solid var(--primary); }
-.widget-2 { bottom: 45px; right: -20px; border-left: 3px solid var(--secondary); }
+.widget-1 { top: 30px; left: -10px; border-left: 3px solid var(--primary); }
+.widget-2 { bottom: 30px; right: -10px; border-left: 3px solid var(--primary); }
 
-.text-gold { color: var(--primary); }
-.text-blue { color: var(--secondary); }
+.text-white { color: var(--primary); }
 
 /* ==========================================================================
    SOBRE & STATS
    ========================================================================== */
 .sobre-section {
-    background: rgba(19, 26, 42, 0.3);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .sobre-text p {
@@ -377,10 +399,10 @@ section {
 }
 
 .stat-card {
-    background: var(--bg-surface);
+    background: var(--bg-main);
     border: 1px solid var(--border-color);
     padding: 32px;
-    border-radius: 12px;
+    border-radius: 6px;
     text-align: center;
     transition: var(--transition-smooth);
 }
@@ -394,42 +416,41 @@ section {
 
 .stat-card p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: var(--shadow);
+    border-color: var(--primary);
+    transform: translateY(-3px);
 }
 
 /* ==========================================================================
-   SERVIÇOS (CARDS PREMIUM)
+   SERVIÇOS
    ========================================================================== */
 .service-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     padding: 40px 32px;
-    border-radius: 12px;
+    border-radius: 6px;
     transition: var(--transition-smooth);
-    position: relative;
 }
 
 .icon-box {
-    width: 50px;
-    height: 50px;
-    background: rgba(214, 175, 55, 0.08);
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-bottom: 24px;
 }
 
 .service-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     margin-bottom: 12px;
     font-weight: 600;
 }
@@ -440,23 +461,24 @@ section {
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(212, 175, 55, 0.4);
-    box-shadow: var(--shadow);
+    transform: translateY(-6px);
+    border-color: var(--primary);
 }
 
 /* ==========================================================================
-   FUNCIONALIDADES & DIFERENCIAIS
+   FUNCIONALIDADES
    ========================================================================== */
 .funcionalidades-section {
-    background: rgba(19, 26, 42, 0.2);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .feat-card {
-    background: var(--bg-surface);
+    background: var(--bg-main);
     border: 1px solid var(--border-color);
     padding: 24px;
-    border-radius: 10px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -474,12 +496,12 @@ section {
 }
 
 .feat-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(212, 175, 55, 0.3);
+    border-color: var(--primary);
+    transform: translateY(-3px);
 }
 
 /* ==========================================================================
-   PROJETOS (CASOS DE SUCESSO)
+   PROJETOS
    ========================================================================== */
 .projetos-grid {
     display: grid;
@@ -490,7 +512,7 @@ section {
 .project-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 14px;
+    border-radius: 6px;
     overflow: hidden;
     transition: var(--transition-smooth);
 }
@@ -506,6 +528,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: grayscale(40%);
     transition: var(--transition-smooth);
 }
 
@@ -515,7 +538,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(11, 15, 25, 0.6);
+    background: rgba(10, 10, 10, 0.7);
     display: flex;
     align-items: flex-end;
     padding: 16px;
@@ -530,7 +553,7 @@ section {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 .project-info {
@@ -538,7 +561,7 @@ section {
 }
 
 .project-info h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     margin-bottom: 12px;
 }
 
@@ -550,24 +573,25 @@ section {
     overflow: hidden;
 }
 
-/* Hover Efeitos de Projetos */
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(212, 175, 55, 0.4);
-    box-shadow: var(--shadow);
+    transform: translateY(-6px);
+    border-color: var(--primary);
 }
 
 .project-card:hover .project-image-box img {
-    transform: scale(1.08);
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 .project-card:hover .project-overlay {
     opacity: 1;
 }
 
-/* Demonstrações Pills */
+/* DEMO PILLS */
 .demo-section {
-    background: rgba(19, 26, 42, 0.4);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 60px 0;
 }
 
@@ -579,11 +603,11 @@ section {
 }
 
 .demo-pill {
-    background: var(--bg-surface);
+    background: var(--bg-main);
     border: 1px solid var(--border-color);
     padding: 10px 20px;
     border-radius: 30px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-muted);
     transition: var(--transition-smooth);
@@ -597,39 +621,38 @@ section {
 .demo-pill:hover {
     border-color: var(--primary);
     color: var(--text-main);
-    transform: translateY(-2px);
 }
 
 /* ==========================================================================
    MANUTENÇÃO MENSAL
    ========================================================================== */
-.maintenance-premium-card {
-    background: linear-gradient(135deg, #131a2a 0%, #0d1321 100%);
+.maintenance-card {
+    background: var(--bg-surface);
     border: 1px solid var(--border-color);
     border-left: 4px solid var(--primary);
     padding: 50px;
-    border-radius: 16px;
-    box-shadow: var(--shadow);
+    border-radius: 6px;
 }
 
-.badge-gold {
-    background: rgba(212, 175, 55, 0.1);
+.badge-tag {
+    background: var(--bg-main);
     color: var(--primary);
+    border: 1px solid var(--border-color);
     padding: 4px 12px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    border-radius: 2px;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     display: inline-block;
     margin-bottom: 16px;
 }
 
-.maintenance-premium-card h2 {
+.maintenance-card h2 {
     font-size: 2rem;
     margin-bottom: 16px;
 }
 
-.maintenance-premium-card p {
+.maintenance-card p {
     color: var(--text-muted);
     max-width: 800px;
     margin-bottom: 32px;
@@ -649,7 +672,7 @@ section {
 }
 
 /* ==========================================================================
-   METODOLOGIA / TIMELINE ELEGANTE
+   METODOLOGIA / TIMELINE
    ========================================================================== */
 .timeline {
     position: relative;
@@ -662,7 +685,7 @@ section {
     position: absolute;
     left: 40px;
     top: 0;
-    width: 2px;
+    width: 1px;
     height: 100%;
     background: var(--border-color);
 }
@@ -677,16 +700,16 @@ section {
     position: absolute;
     left: 20px;
     top: 0;
-    width: 42px;
-    height: 42px;
-    background: var(--bg-surface);
-    border: 2px solid var(--primary);
+    width: 40px;
+    height: 40px;
+    background: var(--bg-main);
+    border: 1px solid var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 800;
     color: var(--primary);
     z-index: 2;
 }
@@ -695,7 +718,7 @@ section {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     padding: 24px;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .timeline-content h3 {
@@ -712,14 +735,16 @@ section {
    DEPOIMENTOS & FAQ
    ========================================================================== */
 .depoimentos-section {
-    background: rgba(19, 26, 42, 0.3);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .testimonial-card {
-    background: var(--bg-surface);
+    background: var(--bg-main);
     border: 1px solid var(--border-color);
     padding: 32px;
-    border-radius: 12px;
+    border-radius: 6px;
 }
 
 .stars {
@@ -746,12 +771,13 @@ section {
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
+    filter: grayscale(50%);
 }
 
-.user-info h4 { font-size: 1rem; font-weight: 600; }
+.user-info h4 { font-size: 0.95rem; font-weight: 600; }
 .user-info span { font-size: 0.8rem; color: var(--text-muted); }
 
-/* FAQ Accordion */
+/* FAQ */
 .faq-wrapper {
     max-width: 750px;
     margin: 0 auto;
@@ -760,7 +786,7 @@ section {
 .faq-item {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 6px;
     margin-bottom: 16px;
     overflow: hidden;
 }
@@ -806,7 +832,7 @@ section {
 }
 
 /* ==========================================================================
-   CONTATO & FORMULÁRIO PREMIUM
+   CONTATO (SEM FORMULÁRIO)
    ========================================================================== */
 .contato-links-list {
     display: flex;
@@ -819,7 +845,7 @@ section {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -829,7 +855,7 @@ section {
 }
 
 .contact-item-link i {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--primary);
     width: 30px;
     text-align: center;
@@ -842,7 +868,7 @@ section {
 }
 
 .contact-item-link strong {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -851,47 +877,44 @@ section {
     border-color: var(--primary);
 }
 
-/* Formulário Glass/Surface */
-.premium-form {
+/* Card Dinâmico CTA na Direita */
+.contato-cta-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-inner-card {
+    position: relative;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    padding: 40px;
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-}
-
-.premium-form h3 {
-    font-size: 1.4rem;
-    margin-bottom: 24px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-muted);
-}
-
-.form-group input, .form-group textarea {
+    padding: 48px 36px;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
     width: 100%;
-    background: rgba(11, 15, 25, 0.6);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 12px 16px;
-    color: var(--text-main);
-    font-family: inherit;
-    font-size: 0.95rem;
-    transition: var(--transition-smooth);
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
+.cta-logo-bg {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 180px;
+    height: 180px;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+}
+
+.cta-inner-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+.cta-inner-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 32px;
 }
 
 .btn-full {
@@ -903,7 +926,7 @@ section {
    RODAPÉ (FOOTER)
    ========================================================================== */
 .main-footer {
-    background: #070a12;
+    background: #050505;
     border-top: 1px solid var(--border-color);
     padding: 60px 0 24px 0;
 }
@@ -923,8 +946,10 @@ section {
 }
 
 .footer-links h4, .footer-socials h4 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .footer-links ul {
@@ -952,11 +977,11 @@ section {
 }
 
 .social-icons-row a {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -980,7 +1005,7 @@ section {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (MEDIA QUERIES COMPLETA)
+   RESPONSIVIDADE (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 1024px) {
     .grid-3 { grid-template-columns: repeat(2, 1fr); }
@@ -1016,7 +1041,7 @@ section {
 
 @media (max-width: 480px) {
     .grid-3, .grid-4, .projetos-grid { grid-template-columns: 1fr; }
-    .hero-content h1 { font-size: 2.4rem; }
+    .hero-content h1 { font-size: 2.3rem; }
     .hero-buttons { flex-direction: column; }
-    .maintenance-premium-card { padding: 24px; }
+    .maintenance-card { padding: 24px; }
 }
